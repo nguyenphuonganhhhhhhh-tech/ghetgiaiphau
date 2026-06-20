@@ -702,7 +702,7 @@ STATIONS = [
 		"5.1": "ống gan phải",
 		"5.2": "ống gan trái",
 		"5.3": "ống gan chung",
-		"5.4": "ống mật chủ,
+		"5.4": "ống mật chủ",
 		"5.5": "ống túi mật",
 		"7": "ống tuỵ chính",
 		"7.2": "ống tuỵ phụ",
