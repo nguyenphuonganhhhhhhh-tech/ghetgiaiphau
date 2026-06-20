@@ -6,12 +6,12 @@ from PIL import Image
 # CẤU HÌNH TRANG
 # =========================
 st.set_page_config(
-    page_title="Chạy trạm Giải phẫu",
+    page_title="Ghét Giải Phẫu",
     page_icon="🧠",
     layout="wide"
 )
 
-st.title("🧠 WEB CHẠY TRẠM GIẢI PHẪU")
+st.title("🧠 Ghét Giải phẫu")
 st.caption("Sinh viên nhập đáp án theo từng số. Sau khi nhấn Enter, đáp án đúng sẽ hiện ngay bên dưới.")
 
 # =========================
@@ -757,7 +757,7 @@ STATIONS = [
     },
 ]
 
-IMAGE_DIR = Path("images")
+IMAGE_DIR = Path(".")
 
 # =========================
 # HÀM TIỆN ÍCH
