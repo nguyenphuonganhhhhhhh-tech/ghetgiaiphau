@@ -17,14 +17,23 @@ st.markdown("""
 <style>
 .fixed-img-box {
     position: fixed;
-    top: 120px;
+    top: 130px;
     left: 430px;
-    width: 45%;
+    width: 38%;
+    max-height: 75vh;
+    overflow: auto;
     z-index: 10;
     background: white;
 }
+
+.fixed-img-box img {
+    width: 100%;
+    max-height: 72vh;
+    object-fit: contain;
+}
+
 .answer-box {
-    margin-left: 52%;
+    margin-left: 45%;
 }
 </style>
 """, unsafe_allow_html=True)
