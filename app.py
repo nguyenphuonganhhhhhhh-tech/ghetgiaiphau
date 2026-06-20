@@ -56,7 +56,7 @@ STATIONS = [
             "2": "rãnh td chẩm ",
             "3": "rãnh bên phụ",
 	    "4": "hồi cạnh hải mã",
-	.   "5": "hồi thẳng"
+	   "5": "hồi thẳng"
         }
     },
     {
@@ -181,6 +181,7 @@ STATIONS = [
 		"13.3": "cơ bậc thang trước",
     		"14": "tm cảnh ngoài",
 		"15": "đm dưới đòn"
+		}
     },
 
     {
@@ -267,7 +268,7 @@ STATIONS = [
 		"1.3": "sừng lớn xg móng",
     		"2.1": "mảnh sụn giáp",
 		"2.2": "lồi thanh quản",
-		"2.3": "khuyết giáp trên"
+		"2.3": "khuyết giáp trên",
 		"3": "sụn nhẫn",
 		"4": "sụn khí quản",
 		"5.1": "tuyến giáp",
@@ -408,18 +409,17 @@ STATIONS = [
         "answers": {
                 "1.1": "sụn giáp",
     		"1.2": "màng giáp móng",
-		"1.3": "màng nhẫn giáp"
+		"1.3": "màng nhẫn giáp",
     		"2.1": "đm cảnh chung phải",
 		"2.2": "đm cảnh chung trái",
 		"3.1": "tm cảnh trong phải",
-		"3.2": "tm cảnh trong trái"
+		"3.2": "tm cảnh trong trái",
 		"4.1": "tm cánh tay đầu phải",
 		"4.2": "tm cánh tay đầu trái",
 		"5": "cung đm chủ",
 		"6": "thân đm phổi",
 		"7.1": "khe ngang",
 		"7.2": "khe chếch"
-		
         }
     },
     {
@@ -430,7 +430,7 @@ STATIONS = [
     		"2.1": "phế quản chính phải",
 		"2.2": "phế quản chính trái",
 		"4": "tm đơn",
-		"5.1": "đm phổi"
+		"5.1": "đm phổi",
 		"5.2": "tm phổi",
 		"6": "tm chủ trên",
 		"7": "thực quản",
@@ -481,8 +481,8 @@ STATIONS = [
     		"2": "dc rộng",
 		"3": "vòi tử cung",
 		"3.1": "bóng tử cung",
-		"3.2": "phễu tử cung"
-		"3.3": "eo vòi tử cung"
+		"3.2": "phễu tử cung",
+		"3.3": "eo vòi tử cung",
 		"4": "nếp rốn trong",
 		"5": "dc riêng buồng trứng",
 		"6": "cơ thẳng bụng"	
