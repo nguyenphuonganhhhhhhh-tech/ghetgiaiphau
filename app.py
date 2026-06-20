@@ -207,7 +207,7 @@ STATIONS = [
 		"4.2": "tuyến nước bọt dưới lưỡi",
 		"5.1": "thềm mũi",
 		"5.2": "ngách mũi",
-		"5.3": "xoăn mũi:
+		"5.3": "xoăn mũi"
 		
         }
     },
