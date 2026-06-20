@@ -691,7 +691,7 @@ STATIONS = [
         "answers": {
                 "1.1": "đm thân tạng",
     		"1.2": "đm lách",
-    		"1.3": "đm gan chung,
+    		"1.3": "đm gan chung",
 		"1.4": "đm gan riêng",
 		"2": "đm tá tuỵ trên trước",
 		"3": "đm tá tuỵ dưới trước",
