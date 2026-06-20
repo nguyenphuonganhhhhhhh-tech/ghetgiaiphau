@@ -13,7 +13,15 @@ st.set_page_config(
 
 st.title("🧠 Ghét Giải phẫu")
 st.caption("Sinh viên nhập đáp án theo từng số. Sau khi nhấn Enter, đáp án đúng sẽ hiện ngay bên dưới.")
-
+st.markdown("""
+<style>
+.sticky-image {
+    position: sticky;
+    top: 20px;
+    z-index: 10;
+}
+</style>
+""", unsafe_allow_html=True)
 # =========================
 # DỮ LIỆU TRẠM
 # Bạn chỉ cần sửa phần này:
