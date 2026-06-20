@@ -50,7 +50,7 @@ STATIONS = [
         "answers": {
             "1.1": "rãnh đai", "1.2": "rãnh dưới đỉnh", "2": "rãnh thể chai", "3.1": "mỏ thể chai",
             "3.2": "gối thể chai", "3.3": "thân thể chai", "3.4": "lồi thể chai", "4": "rãnh đỉnh chẩm",
-            "5": "rãnh cựa", "6.1": "hồi đai", "6.2": "hồi chêm", "6.3": "hồi lưỡi", "6.4": "tiểu thuỳ cạnh tt",
+            "5": "rãnh cựa", "6.1": "hồi đai", "6.2": "hồi chêm", "6.3": "hồi lưỡi", "6.4": "tiểu thuỳ trung tâm",
             "7.1": "đồi thị", "7.2": "mép dính gian đồi thị", "8": "vòm não", "9": "vách trong suốt",
             "10": "vùng hạ đồi", "11": "lỗ gian não thất", "12": "mép trước"
         }
@@ -120,11 +120,11 @@ STATIONS = [
         "image": "11.jpg",
         "answers": {
             "1": "rãnh đai", "2": "rãnh dưới đỉnh", "3": "rãnh thể chai", "4": "rãnh đỉnh chẩm",
-            "5": "rãnh cựa", "6": "tiểu thuỳ cạnh tt", "7": "hồi đai", "8": "hồi chêm",
+            "5": "rãnh cựa", "6": "tiểu thuỳ cạnh trung tâm", "7": "hồi đai", "8": "hồi chêm",
             "9": "hồi lưỡi", "10.1": "mỏ thể chai", "10.2": "gối thể chai", "10.3": "thân thể chai",
             "10.4": "lồi thể chai", "11": "vách trong suốt", "12": "vòm não", "13": "đồi thị",
             "13.1": "mép dính gian đồi thị", "14": "vùng hạ đồi", "15": "lỗ gian não thất", "16": "mép trước",
-            "17": "thể tùng", "18": "mép sau", "19": "não thất IV", "20": "tiểu não"
+            "17": "thể tùng", "18": "mép sau", "19": "não thất IV", "20": "tiễu não"
         }
     },
     {
@@ -183,7 +183,7 @@ STATIONS = [
         "name": "Trạm 23",
         "image": "23.jpg",
         "answers": {
-            "1.1": "tâm nhĩ phải", "1.2": "tâm nhĩ trái", "2.1": "đm phổi", "2.2": "tm phổi ",
+            "1.1": "tâm nhĩ phải", "1.2": "tâm nhĩ trái", "2.1": "đm phổi", "2.2": "tm phổi P",
             "3.1": "tm chủ trên", "3.2": "tm chủ dưới", "4": "xoang vành", "5.1": "tm bờ trái",
             "5.2": "tm tim giữa", "5.3": "tm tim lớn", "6": "đm gian thất sau"
         }
@@ -200,7 +200,7 @@ STATIONS = [
         "name": "Trạm 25",
         "image": "25.jpg",
         "answers": {
-            "1.1": "van đm phổi", "1.2": "van đm chủ", "2": "vách gian thất", 
+            "1.1": "van đm phổi", "1.2": "van đm chủ", "2": "vách gian thất", "2.2": "cơ trâm lưỡi",
             "3.2": "cầu cơ", "3.3": "cơ nhú", "4": "tâm nhĩ phải", "5.1": "tâm thất phải", "5.2": "tâm thất trái"
         }
     },
@@ -210,7 +210,7 @@ STATIONS = [
         "answers": {
             "1": "tm đơn", "2.1": "tm cánh tay đầu trái", "2.2": "tm cánh tay đầu phải", "3": "thân đm cánh tay đầu",
             "4": "đm cảnh chung trái", "5.1": "đm phổi phải", "5.2": "đm phổi trái", "6.1": "tm chủ trên",
-            "6.2": "tm chủ dưới", "7": "xoang vành", "8.1": "tm bờ trái", "8.2": "tm tim giữa",
+            "6.2": "tm chủ dưới", "7": "xoang đm vành", "8.1": "tm bờ trái", "8.2": "tm tim giữa",
             "9": "đm gian thất sau"
         }
     },
@@ -400,14 +400,28 @@ IMAGE_DIR = Path(".")
 if "station_index" not in st.session_state:
     st.session_state.station_index = 0
 
-station_index = st.session_state.station_index
-station = STATIONS[station_index]
-
 # =========================
-# THANH SIDEBAR
+# THANH SIDEBAR (ĐÃ THÊM CHỌN TRẠM NHANH)
 # =========================
 st.sidebar.header("⚙️ Cài đặt")
-st.sidebar.write(f"Đang ở: **{station['name']}**")
+
+# Tạo danh sách tên các trạm để sinh viên bấm chọn nhanh
+station_names = [s["name"] for s in STATIONS]
+
+# Đồng bộ Selectbox với session_state hiện tại của trạm
+selected_station_name = st.sidebar.selectbox(
+    "Chọn trạm làm bài nhanh:",
+    options=station_names,
+    index=st.session_state.station_index
+)
+
+# Cập nhật lại chỉ số trạm dựa trên lựa chọn từ Selectbox của sinh viên
+station_index = station_names.index(selected_station_name)
+if station_index != st.session_state.station_index:
+    st.session_state.station_index = station_index
+    st.rerun()
+
+station = STATIONS[station_index]
 
 show_all_answers = st.sidebar.checkbox("Hiện toàn bộ đáp án cho giảng viên", value=False)
 
@@ -480,7 +494,7 @@ with col2:
     # Lấy danh sách các số câu hỏi của trạm hiện tại
     numbers = list(station["answers"].keys())
 
-    # Vòng lặp sinh các ô điền câu hỏi
+    # Vòng lặp sinh các ô điền câu hỏi gốc của Streamlit
     for i, number in enumerate(numbers):
         correct_answer = station["answers"][number]
 
