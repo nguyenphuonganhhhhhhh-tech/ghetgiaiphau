@@ -493,7 +493,7 @@ with col2:
 
     numbers = list(station["answers"].keys())
 
-        for i, number in enumerate(numbers):
+    for i, number in enumerate(numbers):
         correct_answer = station["answers"][number]
 
         st.markdown(f"**Số {number}:**")
