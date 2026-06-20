@@ -50,7 +50,7 @@ STATIONS = [
         "answers": {
             "1.1": "rãnh đai", "1.2": "rãnh dưới đỉnh", "2": "rãnh thể chai", "3.1": "mỏ thể chai",
             "3.2": "gối thể chai", "3.3": "thân thể chai", "3.4": "lồi thể chai", "4": "rãnh đỉnh chẩm",
-            "5": "rãnh cựa", "6.1": "hồi đai", "6.2": "hồi chêm", "6.3": "hồi lưỡi", "6.4": "tiểu thuỳ trung tâm",
+            "5": "rãnh cựa", "6.1": "hồi đai", "6.2": "hồi chêm", "6.3": "hồi lưỡi", "6.4": "tiểu thuỳ cạnh tt",
             "7.1": "đồi thị", "7.2": "mép dính gian đồi thị", "8": "vòm não", "9": "vách trong suốt",
             "10": "vùng hạ đồi", "11": "lỗ gian não thất", "12": "mép trước"
         }
