@@ -599,7 +599,7 @@ STATIONS = [
     		
     		"2.1": "dc vành",
 		
-		"3": "tm chủ dưới,
+		"3": "tm chủ dưới",
 		"4": "tm gan trái"
 		
 		
