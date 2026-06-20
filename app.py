@@ -794,67 +794,55 @@ if st.sidebar.button("🔄 Làm lại trạm này"):
 st.markdown("---")
 st.subheader(station["name"])
 
-# HIỆN ẢNH CỐ ĐỊNH Ở TRÊN KHI CUỘN
-image_path = IMAGE_DIR / station["image"]
+col_img, col_answer = st.columns([1.2, 1])
 
-if image_path.exists():
-    with open(image_path, "rb") as f:
-        img_data = base64.b64encode(f.read()).decode()
-
-    file_ext = image_path.suffix.replace(".", "")
-
-    st.markdown(f"""
-    <div style="
-        position: sticky;
-        top: 0;
-        z-index: 999;
-        background-color: white;
-        padding: 10px 0 15px 0;
-        border-bottom: 1px solid #ddd;
-    ">
-        <img src="data:image/{file_ext};base64,{img_data}"
-             style="width:100%; max-height:430px; object-fit:contain;">
-        <p style="text-align:center; color:gray;">Hình ảnh {station["name"]}</p>
-    </div>
+with col_img:
+    st.markdown("""
+    <div style="position: sticky; top: 20px;">
     """, unsafe_allow_html=True)
-else:
-    st.error(f"Không tìm thấy ảnh: {image_path}")
 
-st.markdown("---")
+    image_path = IMAGE_DIR / station["image"]
 
-# NHẬP ĐÁP ÁN
-st.markdown("### ✍️ Nhập đáp án")
-
-
-for number, correct_answer in station["answers"].items():
-    st.markdown(f"**Số {number}:**")
-
-    user_answer = st.text_input(
-        "Nhập đáp án",
-        key=f"answer_{station_index}_{number}",
-        placeholder="Nhập đáp án rồi nhấn Enter...",
-        label_visibility="collapsed"
-    )
-
-    if user_answer.strip():
-        if normalize_answer(user_answer) == normalize_answer(correct_answer):
-            st.success(f"✅ Đúng. Đáp án: {correct_answer}")
-        else:
-            st.error(f"❌ Đáp án đúng: {correct_answer}")
-
-    st.markdown("---")
-
-if st.button("➡️ Chuyển sang trạm tiếp theo"):
-    if st.session_state.station_index < len(STATIONS) - 1:
-        st.session_state.station_index += 1
-        st.rerun()
+    if image_path.exists():
+        img = Image.open(image_path)
+        st.image(img, use_container_width=True)
     else:
-        st.success("🎉 Đã hoàn thành tất cả các trạm!")
+        st.error(f"Không tìm thấy ảnh: {image_path}")
 
-if st.button("⬅️ Quay lại trạm trước"):
-    if st.session_state.station_index > 0:
-        st.session_state.station_index -= 1
-        st.rerun()
+    st.markdown("</div>", unsafe_allow_html=True)
+
+with col_answer:
+    st.markdown("### ✍️ Nhập đáp án")
+
+    for number, correct_answer in station["answers"].items():
+        st.markdown(f"**Số {number}:**")
+
+        user_answer = st.text_input(
+            "Nhập đáp án",
+            key=f"answer_{station_index}_{number}",
+            placeholder="Nhập đáp án rồi nhấn Enter...",
+            label_visibility="collapsed"
+        )
+
+        if user_answer.strip():
+            if normalize_answer(user_answer) == normalize_answer(correct_answer):
+                st.success(f"✅ Đúng. Đáp án: {correct_answer}")
+            else:
+                st.error(f"❌ Đáp án đúng: {correct_answer}")
+
+        st.markdown("---")
+
+    if st.button("➡️ Chuyển sang trạm tiếp theo"):
+        if st.session_state.station_index < len(STATIONS) - 1:
+            st.session_state.station_index += 1
+            st.rerun()
+        else:
+            st.success("🎉 Đã hoàn thành tất cả các trạm!")
+
+    if st.button("⬅️ Quay lại trạm trước"):
+        if st.session_state.station_index > 0:
+            st.session_state.station_index -= 1
+            st.rerun()
 
 if show_all_answers:
     st.markdown("## 🔐 Đáp án toàn bộ trạm")
