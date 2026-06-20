@@ -1,7 +1,7 @@
 import streamlit as st
 from pathlib import Path
 from PIL import Image
-
+import base64
 # =========================
 # CẤU HÌNH TRANG
 # =========================
@@ -794,12 +794,29 @@ if st.sidebar.button("🔄 Làm lại trạm này"):
 st.markdown("---")
 st.subheader(station["name"])
 
-# HIỆN ẢNH
+# HIỆN ẢNH CỐ ĐỊNH Ở TRÊN KHI CUỘN
 image_path = IMAGE_DIR / station["image"]
 
 if image_path.exists():
-    img = Image.open(image_path)
-    st.image(img, use_container_width=True)
+    with open(image_path, "rb") as f:
+        img_data = base64.b64encode(f.read()).decode()
+
+    file_ext = image_path.suffix.replace(".", "")
+
+    st.markdown(f"""
+    <div style="
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        background-color: white;
+        padding: 10px 0 15px 0;
+        border-bottom: 1px solid #ddd;
+    ">
+        <img src="data:image/{file_ext};base64,{img_data}"
+             style="width:100%; max-height:430px; object-fit:contain;">
+        <p style="text-align:center; color:gray;">Hình ảnh {station["name"]}</p>
+    </div>
+    """, unsafe_allow_html=True)
 else:
     st.error(f"Không tìm thấy ảnh: {image_path}")
 
