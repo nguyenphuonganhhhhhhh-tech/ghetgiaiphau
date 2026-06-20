@@ -762,105 +762,74 @@ IMAGE_DIR = Path(".")
 # =========================
 # HÀM TIỆN ÍCH
 # =========================
+
 def normalize_answer(text: str) -> str:
-    """Chuẩn hóa đáp án để so sánh đơn giản."""
     return text.strip().lower()
 
-def get_station(index: int):
-    return STATIONS[index]
+if "station_index" not in st.session_state:
+    st.session_state.station_index = 0
 
-# =========================
-# SIDEBAR
-# =========================
+station_index = st.session_state.station_index
+station = STATIONS[station_index]
+
 st.sidebar.header("⚙️ Cài đặt")
-
-station_names = [station["name"] for station in STATIONS]
-selected_name = st.sidebar.selectbox("Chọn trạm", station_names)
-station_index = station_names.index(selected_name)
-station = get_station(station_index)
+st.sidebar.write(f"Đang ở: **{station['name']}**")
 
 show_all_answers = st.sidebar.checkbox("Hiện toàn bộ đáp án cho giảng viên", value=False)
 
 if st.sidebar.button("🔄 Làm lại trạm này"):
-    keys_to_delete = [
-        key for key in st.session_state.keys()
-        if key.startswith(f"answer_{station_index}_") or key.startswith(f"submitted_{station_index}_")
-    ]
-    for key in keys_to_delete:
-        del st.session_state[key]
+    for key in list(st.session_state.keys()):
+        if key.startswith(f"answer_{station_index}_"):
+            del st.session_state[key]
     st.rerun()
 
-st.sidebar.markdown("---")
-st.sidebar.info(
-    "Cách dùng: Sinh viên nhập đáp án ở từng ô rồi nhấn Enter. "
-    "Sau khi nhập xong một chi tiết, đáp án đúng hiện ngay bên dưới ô đó."
-)
-
-# =========================
-# HIỂN THỊ TRẠM
-# =========================
 st.subheader(station["name"])
 
-left_col, right_col = st.columns([1.2, 1])
+col1, col2 = st.columns([1.2, 1])
 
-with left_col:
+with col1:
     image_path = IMAGE_DIR / station["image"]
 
     if image_path.exists():
         img = Image.open(image_path)
-        st.image(img, caption=f"Hình ảnh {station['name']}", use_container_width=True)
+        st.image(img, use_container_width=True)
     else:
-        st.warning(
-            f"Chưa có ảnh: `{image_path}`. "
-            "Bạn hãy đưa ảnh vào thư mục `images` và sửa đúng tên file trong app.py."
-        )
-        st.image(
-            "https://via.placeholder.com/900x600.png?text=UPLOAD+ANATOMY+IMAGE+HERE",
-            caption="Ảnh minh họa tạm thời",
-            use_container_width=True
-        )
+        st.warning(f"Chưa có ảnh: {image_path}")
 
-with right_col:
+with col2:
     st.markdown("### ✍️ Nhập đáp án")
 
-    total = len(station["answers"])
-    completed = 0
+    for number, correct_answer in station["answers"].items():
+        st.markdown(f"**Số {number}:**")
 
-    # Tạo danh sách số
-numbers = list(station["answers"].keys())
+        user_answer = st.text_input(
+            "Nhập đáp án",
+            key=f"answer_{station_index}_{number}",
+            placeholder="Nhập đáp án rồi nhấn Enter...",
+            label_visibility="collapsed"
+        )
 
-# Lưu số hiện tại
-if "current_index" not in st.session_state:
-    st.session_state.current_index = 0
+        if user_answer.strip():
+            if normalize_answer(user_answer) == normalize_answer(correct_answer):
+                st.success(f"✅ Đúng. Đáp án: {correct_answer}")
+            else:
+                st.error(f"❌ Đáp án đúng: {correct_answer}")
 
-current_number = numbers[st.session_state.current_index]
-correct_answer = station["answers"][current_number]
+        st.markdown("---")
 
-st.markdown(f"## Số cần trả lời: {current_number}")
-
-user_answer = st.text_input(
-    "Nhập đáp án:",
-    key=f"answer_{current_number}",
-    placeholder="Nhập đáp án rồi nhấn Enter..."
-)
-
-if user_answer.strip():
-    if user_answer.strip().lower() == correct_answer.strip().lower():
-        st.success(f"✅ Đúng. Đáp án: {correct_answer}")
-    else:
-        st.error(f"❌ Đáp án đúng: {correct_answer}")
-
-    if st.button("Câu tiếp theo"):
-        if st.session_state.current_index < len(numbers) - 1:
-            st.session_state.current_index += 1
+    if st.button("➡️ Chuyển sang trạm tiếp theo"):
+        if st.session_state.station_index < len(STATIONS) - 1:
+            st.session_state.station_index += 1
             st.rerun()
         else:
-            st.success("🎉 Đã hoàn thành trạm này!")
-# =========================
-# KHU VỰC GIẢNG VIÊN
-# =========================
+            st.success("🎉 Đã hoàn thành tất cả các trạm!")
+
+    if st.button("⬅️ Quay lại trạm trước"):
+        if st.session_state.station_index > 0:
+            st.session_state.station_index -= 1
+            st.rerun()
+
 if show_all_answers:
-    st.markdown("---")
     st.markdown("## 🔐 Đáp án toàn bộ trạm")
     for number, correct_answer in station["answers"].items():
         st.write(f"**{number}.** {correct_answer}")
