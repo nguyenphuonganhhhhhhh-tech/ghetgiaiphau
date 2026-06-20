@@ -15,10 +15,16 @@ st.title("🧠 Ghét Giải phẫu")
 st.caption("Sinh viên nhập đáp án theo từng số. Sau khi nhấn Enter, đáp án đúng sẽ hiện ngay bên dưới.")
 st.markdown("""
 <style>
-.sticky-image {
-    position: sticky;
-    top: 20px;
+.fixed-img-box {
+    position: fixed;
+    top: 120px;
+    left: 430px;
+    width: 45%;
     z-index: 10;
+    background: white;
+}
+.answer-box {
+    margin-left: 52%;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -794,57 +800,47 @@ if st.sidebar.button("🔄 Làm lại trạm này"):
 st.markdown("---")
 st.subheader(station["name"])
 
-col_img, col_answer = st.columns([1.2, 1])
+image_path = IMAGE_DIR / station["image"]
 
-with col_img:
-    st.markdown("""
-    <div style="position: sticky; top: 20px;">
+if image_path.exists():
+    with open(image_path, "rb") as f:
+        import base64
+        img_data = base64.b64encode(f.read()).decode()
+
+    ext = image_path.suffix.replace(".", "")
+
+    st.markdown(f"""
+    <div class="fixed-img-box">
+        <img src="data:image/{ext};base64,{img_data}" style="width:100%;">
+    </div>
     """, unsafe_allow_html=True)
+else:
+    st.error(f"Không tìm thấy ảnh: {image_path}")
 
-    image_path = IMAGE_DIR / station["image"]
+st.markdown('<div class="answer-box">', unsafe_allow_html=True)
 
-    if image_path.exists():
-        img = Image.open(image_path)
-        st.image(img, use_container_width=True)
-    else:
-        st.error(f"Không tìm thấy ảnh: {image_path}")
+st.markdown("### ✍️ Nhập đáp án")
 
-    st.markdown("</div>", unsafe_allow_html=True)
+for number, correct_answer in station["answers"].items():
+    st.markdown(f"**Số {number}:**")
+    user_answer = st.text_input(
+        "Nhập đáp án",
+        key=f"answer_{station_index}_{number}",
+        placeholder="Nhập đáp án rồi nhấn Enter...",
+        label_visibility="collapsed"
+    )
 
-with col_answer:
-    st.markdown("### ✍️ Nhập đáp án")
+    if user_answer.strip():
+        st.error(f"❌ Đáp án đúng: {correct_answer}")
 
-    for number, correct_answer in station["answers"].items():
-        st.markdown(f"**Số {number}:**")
+    st.markdown("---")
 
-        user_answer = st.text_input(
-            "Nhập đáp án",
-            key=f"answer_{station_index}_{number}",
-            placeholder="Nhập đáp án rồi nhấn Enter...",
-            label_visibility="collapsed"
-        )
+if st.button("➡️ Chuyển sang trạm tiếp theo"):
+    st.session_state.station_index += 1
+    st.rerun()
 
-        if user_answer.strip():
-            if normalize_answer(user_answer) == normalize_answer(correct_answer):
-                st.success(f"✅ Đúng. Đáp án: {correct_answer}")
-            else:
-                st.error(f"❌ Đáp án đúng: {correct_answer}")
+if st.button("⬅️ Quay lại trạm trước"):
+    st.session_state.station_index -= 1
+    st.rerun()
 
-        st.markdown("---")
-
-    if st.button("➡️ Chuyển sang trạm tiếp theo"):
-        if st.session_state.station_index < len(STATIONS) - 1:
-            st.session_state.station_index += 1
-            st.rerun()
-        else:
-            st.success("🎉 Đã hoàn thành tất cả các trạm!")
-
-    if st.button("⬅️ Quay lại trạm trước"):
-        if st.session_state.station_index > 0:
-            st.session_state.station_index -= 1
-            st.rerun()
-
-if show_all_answers:
-    st.markdown("## 🔐 Đáp án toàn bộ trạm")
-    for number, correct_answer in station["answers"].items():
-        st.write(f"**{number}.** {correct_answer}")
+st.markdown('</div>', unsafe_allow_html=True)
