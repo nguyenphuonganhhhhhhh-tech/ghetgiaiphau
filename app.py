@@ -1,7 +1,7 @@
 import streamlit as st
 from pathlib import Path
 import base64
-import streamlit.components.v1 as components
+
 # =========================
 # CẤU HÌNH TRANG
 # =========================
@@ -12,13 +12,14 @@ st.set_page_config(
 )
 
 st.title("🧠 Ghét Giải phẫu")
-st.caption("Sinh viên nhập đáp án theo từng số. Sau khi nhấn Enter, đáp án đúng sẽ hiện ngay bên dưới.")
+st.caption("Sinh viên nhập đáp án theo từng số. Sau khi nhấn Enter, đáp án đúng sẽ hiện ngay bên dưới và tự động nhảy sang câu tiếp theo.")
 
-# Sử dụng CSS position: sticky để giữ ảnh cố định khi cuộn phần nhập đáp án
+# =========================
+# CSS VÀ SCRIPT TỰ ĐỘNG NHẢY CÂU KHI ẤN ENTER
+# =========================
 st.markdown("""
 <style>
-
-
+/* Giữ cột chứa ảnh cố định khi cuộn màn hình */
 [data-testid="stColumn"]:nth-of-type(1) {
     position: -webkit-sticky;
     position: sticky;
@@ -34,13 +35,37 @@ st.markdown("""
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
-/* Tạo phân tách giữa các câu hỏi rõ ràng hơn */
+/* Đường phân tách giữa các câu hỏi */
 .answer-divider {
     margin-top: 15px;
     margin-bottom: 15px;
     border-bottom: 1px solid #f0f2f6;
 }
 </style>
+
+<script>
+// Bắt sự kiện phím Enter trên toàn bộ ứng dụng
+const handleEnterKey = (e) => {
+    if (e.key === "Enter") {
+        // Tìm tất cả các ô nhập liệu văn bản đang có trên trang
+        const inputs = Array.from(window.parent.document.querySelectorAll('input[type="text"]'));
+        const index = inputs.indexOf(e.target);
+        
+        // Nếu tìm thấy ô hiện tại và vẫn còn ô tiếp theo phía dưới
+        if (index > -1 && index < inputs.length - 1) {
+            setTimeout(() => {
+                inputs[index + 1].focus(); // Nhảy con trỏ chuột xuống ô tiếp theo
+                inputs[index + 1].scrollIntoView({behavior: "smooth", block: "center"}); // Cuộn mượt mà đưa ô đó vào giữa tầm nhìn
+            }, 150); // Trì hoãn 150ms để Streamlit kịp lưu đáp án câu vừa nhập
+        }
+    }
+};
+
+// Đăng ký bộ lắng nghe sự kiện trên trang web cha của Streamlit
+setTimeout(() => {
+    window.parent.document.addEventListener('keydown', handleEnterKey);
+}, 1000);
+</script>
 """, unsafe_allow_html=True)
 
 # =========================
@@ -154,7 +179,7 @@ STATIONS = [
         "image": "14.jpg",
         "answers": {
             "1": "củ não sinh tư", "2": "tuyến tùng", "3": "dây tk ròng rọc", "4": "tam giác lang thang",
-            "5": "tam giác hạ thiệt", "6": "gò tk mặt", "7": "diện tiền đình", "8": "vân tuỷ não thất IV",
+            "5": "tam giác hạ thiệt", "6": "gò tk mặt", "7": "diện tiền đình", "8": "vân tuỷ nội thất IV",
             "9": "màn tuỷ trên"
         }
     },
@@ -440,7 +465,6 @@ if st.sidebar.button("🔄 Làm lại trạm này"):
     st.rerun()
 
 st.sidebar.markdown("---")
-# Thêm nút chuyển trạm vào sidebar để dễ điều hướng nhanh
 if st.sidebar.button("⬅️ Quay lại trạm trước") and station_index > 0:
     st.session_state.station_index -= 1
     st.rerun()
@@ -449,13 +473,11 @@ if st.sidebar.button("➡️ Chuyển sang trạm tiếp theo") and station_inde
     st.session_state.station_index += 1
     st.rerun()
 
-
 st.markdown("---")
 st.subheader(station["name"])
 
 # =========================
 # CHIA CỘT CHÍNH (Cột 1: Ảnh cố định, Cột 2: Ô nhập)
-# Tỷ lệ 5:5 để nhìn cân đối trên màn hình lớn
 # =========================
 col1, col2 = st.columns([5, 5], gap="large")
 
@@ -465,8 +487,6 @@ with col1:
         with open(image_path, "rb") as f:
             img_data = base64.b64encode(f.read()).decode()
         ext = image_path.suffix.replace(".", "")
-        
-        # Nhúng ảnh kèm class CSS để kích hoạt tính năng dính (Sticky)
         st.markdown(f"""
             <img class="sticky-img" src="data:image/{ext};base64,{img_data}">
         """, unsafe_allow_html=True)
@@ -476,23 +496,15 @@ with col1:
 with col2:
     st.markdown("### ✍️ Nhập đáp án")
     
-    # Hiển thị đáp án nhanh cho giảng viên nếu bật checkbox ở Sidebar
     if show_all_answers:
         with st.expander("👁️ Xem nhanh toàn bộ đáp án"):
             for num, ans in station["answers"].items():
                 st.write(f"**Số {num}:** {ans}")
 
-    # Vòng lặp sinh ô điền đáp án
-    def move_to_next_input(i):
-        numbers = list(station["answers"].keys())
-
-        if i < len(numbers) - 1:
-            st.session_state["focus_index"] = i + 1
-        else:
-            st.session_state["focus_index"] = None
-
+    # Lấy danh sách các số câu hỏi của trạm hiện tại
     numbers = list(station["answers"].keys())
 
+    # Vòng lặp sinh các ô điền câu hỏi
     for i, number in enumerate(numbers):
         correct_answer = station["answers"][number]
 
@@ -511,21 +523,8 @@ with col2:
             else:
                 st.error(f"❌ Đáp án đúng: **{correct_answer}**")
 
-            st.markdown(
-                f"""
-                <script>
-                setTimeout(function() {{
-                    const next = window.parent.document.querySelectorAll('input[type="text"]')[{i + 1}];
-                    if (next) {{
-                        next.scrollIntoView({{behavior: "smooth", block: "center"}});
-                    }}
-                }}, 300);
-                </script>
-                """,
-                unsafe_allow_html=True
-            )
-
         st.markdown('<div class="answer-divider"></div>', unsafe_allow_html=True)
+
     # Nút chuyển tiếp nhanh ở cuối phần điền đáp án
     st.markdown("### 🧭 Điều hướng nhanh")
     nav_col1, nav_col2 = st.columns(2)
