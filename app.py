@@ -503,9 +503,20 @@ with col2:
             key=f"answer_{station_index}_{number}",
             placeholder="Nhập đáp án rồi nhấn Enter...",
             label_visibility="collapsed",
-            on_change=move_to_next_input,
-            args=(i,)
-        )
+            if user_answer.strip():
+    st.markdown(
+        f"""
+        <script>
+        setTimeout(function() {{
+            const next = window.parent.document.querySelectorAll('input[type="text"]')[{i + 1}];
+            if (next) {{
+                next.scrollIntoView({{behavior: "smooth", block: "center"}});
+            }}
+        }}, 300);
+        </script>
+        """,
+        unsafe_allow_html=True
+    )
 
         if user_answer.strip():
             if user_answer.strip().lower() == correct_answer.strip().lower():
