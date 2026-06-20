@@ -49,7 +49,7 @@ STATIONS = [
     },
     {
         "name": "Trạm 2",
-        "image": "2.jpg",
+        "image": "2.png",
         "answers": {
             "1.1": "hành khứu",
             "1.2": "dải khứu",
@@ -61,7 +61,7 @@ STATIONS = [
     },
     {
         "name": "Trạm 3",
-        "image": "3.jpg",
+        "image": "3.png",
         "answers": {
                 "1.1": "rãnh đai",
    		"1.2": "rãnh dưới đỉnh",
@@ -593,7 +593,7 @@ STATIONS = [
     },
     {
         "name": "Trạm 37",
-        "image": "37.jpg",
+        "image": "37.png",
         "answers": {
                 "1": "vùng trần",
     		
@@ -607,7 +607,7 @@ STATIONS = [
     },
     {
         "name": "Trạm 38",
-        "image": "38.jpg",
+        "image": "38.png",
         "answers": {
                 "1": "thuỳ vuông",
     		"2": "thuỳ đuôi",
@@ -630,7 +630,7 @@ STATIONS = [
     },
     {
         "name": "Trạm 39",
-        "image": "39.jpg",
+        "image": "39.png",
         "answers": {
                 "1.1": "bướu đại tràng",
     		"1.2": "dải mạc nối",
@@ -649,7 +649,7 @@ STATIONS = [
     },
     {
         "name": "Trạm 40",
-        "image": "40.jpg",
+        "image": "40.png",
         "answers": {
                 "1": "tm lách",
     		"2": "tm cửa",
@@ -664,7 +664,7 @@ STATIONS = [
     },
     {
         "name": "Trạm 41",
-        "image": "41.jpg",
+        "image": "41.png",
         "answers": {
                 "1.1": "tm lách",
     		"1.2": "tm mạc treo tràng dưới",
@@ -687,7 +687,7 @@ STATIONS = [
     },
     {
         "name": "Trạm 42",
-        "image": "42.jpg",
+        "image": "42.png",
         "answers": {
                 "1.1": "đm thân tạng",
     		"1.2": "đm lách",
@@ -732,7 +732,7 @@ STATIONS = [
     },
     {
         "name": "Trạm 46",
-        "image": "46.jpg",
+        "image": "46.png",
         "answers": {
                 "1": "cơ dọc",
     		"2": "cơ vòng",
