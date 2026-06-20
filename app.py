@@ -793,60 +793,49 @@ if st.sidebar.button("🔄 Làm lại trạm này"):
 
 st.subheader(station["name"])
 
-col1, col2 = st.columns([1.2, 1])
+# HIỂN THỊ ẢNH RIÊNG Ở TRÊN
+image_path = IMAGE_DIR / station["image"]
 
-with col1:
-    st.markdown("""
-    <style>
-    div[data-testid="stVerticalBlock"]:has(.sticky-image-box) {
-        position: sticky;
-        top: 20px;
-        z-index: 999;
-    }
-    </style>
-    """, unsafe_allow_html=True)
+if image_path.exists():
+    img = Image.open(image_path)
+    st.image(img, caption=f"Hình ảnh {station['name']}", use_container_width=True)
+else:
+    st.warning(f"Chưa có ảnh: {image_path}")
 
-    st.markdown('<div class="sticky-image-box"></div>', unsafe_allow_html=True)
+st.markdown("---")
 
-    image_path = IMAGE_DIR / station["image"]
+# PHẦN NHẬP ĐÁP ÁN Ở DƯỚI
+st.markdown("### ✍️ Nhập đáp án")
 
-    if image_path.exists():
-        img = Image.open(image_path)
-        st.image(img, use_container_width=True)
-    else:
-        st.warning(f"Chưa có ảnh: {image_path}")
-with col2:
-    st.markdown("### ✍️ Nhập đáp án")
+for number, correct_answer in station["answers"].items():
+    st.markdown(f"**Số {number}:**")
 
-    for number, correct_answer in station["answers"].items():
-        st.markdown(f"**Số {number}:**")
+    user_answer = st.text_input(
+        "Nhập đáp án",
+        key=f"answer_{station_index}_{number}",
+        placeholder="Nhập đáp án rồi nhấn Enter...",
+        label_visibility="collapsed"
+    )
 
-        user_answer = st.text_input(
-            "Nhập đáp án",
-            key=f"answer_{station_index}_{number}",
-            placeholder="Nhập đáp án rồi nhấn Enter...",
-            label_visibility="collapsed"
-        )
-
-        if user_answer.strip():
-            if normalize_answer(user_answer) == normalize_answer(correct_answer):
-                st.success(f"✅ Đúng. Đáp án: {correct_answer}")
-            else:
-                st.error(f"❌ Đáp án đúng: {correct_answer}")
-
-        st.markdown("---")
-
-    if st.button("➡️ Chuyển sang trạm tiếp theo"):
-        if st.session_state.station_index < len(STATIONS) - 1:
-            st.session_state.station_index += 1
-            st.rerun()
+    if user_answer.strip():
+        if normalize_answer(user_answer) == normalize_answer(correct_answer):
+            st.success(f"✅ Đúng. Đáp án: {correct_answer}")
         else:
-            st.success("🎉 Đã hoàn thành tất cả các trạm!")
+            st.error(f"❌ Đáp án đúng: {correct_answer}")
 
-    if st.button("⬅️ Quay lại trạm trước"):
-        if st.session_state.station_index > 0:
-            st.session_state.station_index -= 1
-            st.rerun()
+    st.markdown("---")
+
+if st.button("➡️ Chuyển sang trạm tiếp theo"):
+    if st.session_state.station_index < len(STATIONS) - 1:
+        st.session_state.station_index += 1
+        st.rerun()
+    else:
+        st.success("🎉 Đã hoàn thành tất cả các trạm!")
+
+if st.button("⬅️ Quay lại trạm trước"):
+    if st.session_state.station_index > 0:
+        st.session_state.station_index -= 1
+        st.rerun()
 
 if show_all_answers:
     st.markdown("## 🔐 Đáp án toàn bộ trạm")
