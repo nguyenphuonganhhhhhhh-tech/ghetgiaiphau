@@ -791,17 +791,6 @@ if st.sidebar.button("🔄 Làm lại trạm này"):
             del st.session_state[key]
     st.rerun()
 
-st.subheader(station["name"])
-
-# HIỂN THỊ ẢNH RIÊNG Ở TRÊN
-image_path = IMAGE_DIR / station["image"]
-
-if image_path.exists():
-    img = Image.open(image_path)
-    st.image(img, caption=f"Hình ảnh {station['name']}", use_container_width=True)
-else:
-    st.warning(f"Chưa có ảnh: {image_path}")
-
 st.markdown("---")
 st.subheader(station["name"])
 
