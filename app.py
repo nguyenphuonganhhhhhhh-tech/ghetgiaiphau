@@ -499,11 +499,18 @@ with col2:
         st.markdown(f"**Số {number}:**")
 
         user_answer = st.text_input(
-            "",
-            key=f"answer_{station_index}_{number}",
-            placeholder="Nhập đáp án rồi nhấn Enter...",
-            label_visibility="collapsed",
-            if user_answer.strip():
+    "",
+    key=f"answer_{station_index}_{number}",
+    placeholder="Nhập đáp án rồi nhấn Enter...",
+    label_visibility="collapsed"
+)
+
+if user_answer.strip():
+    if user_answer.strip().lower() == correct_answer.strip().lower():
+        st.success("✅ Đúng chính xác!")
+    else:
+        st.error(f"❌ Đáp án đúng: **{correct_answer}**")
+
     st.markdown(
         f"""
         <script>
