@@ -192,7 +192,7 @@ STATIONS = [
     },
     {
         "name": "Trạm 22",
-        "image": "22.jpg",
+        "image": "22.png",
         "answers": {
             "1.1": "thân đm phổi", "1.2": "cung đm chủ", "1.3": "tm chủ trên", "2.1": "rãnh vành",
             "2.2": "đm vành phải", "3": "đm gian thất trước", "4": "nón đm", "5.1": "tiểu nhĩ phải",
@@ -226,7 +226,7 @@ STATIONS = [
     },
     {
         "name": "Trạm 27",
-        "image": "27.jpg",
+        "image": "27.png",
         "answers": {
             "1": "tm đơn", "2.1": "tm cánh tay đầu trái", "2.2": "tm cánh tay đầu phải", "3": "thân đm cánh tay đầu",
             "4": "đm cảnh chung trái", "5.1": "đm phổi phải", "5.2": "đm phổi trái", "6.1": "tm chủ trên",
