@@ -240,4 +240,346 @@ STATIONS = [
         "image": "31.jpg",
         "answers": {
             "1": "niệu quản", "2": "tuyến thượng thận", "3": "cơ vuông thắt lưng", "4": "cơ thắt lưng lớn",
-            "5": "cơ chậu", "6":
+            "5": "cơ chậu", "6": "cơ ngang bụng", "7": "đm chủ bụng", "8": "tm chủ dưới"
+        }
+    },
+    {
+        "name": "Trạm 32",
+        "image": "32.jpg",
+        "answers": {
+            "1": "dc tròn", "2": "dc rộng", "3": "vòi tử cung", "3.1": "bóng tử cung",
+            "3.2": "phễu tử cung", "3.3": "eo vòi tử cung", "4": "nếp rốn trong", "5": "dc riêng buồng trứng",
+            "6": "cơ thẳng bụng"
+        }
+    },
+    {
+        "name": "Trạm 33",
+        "image": "33.jpg",
+        "answers": {
+            "1": "đỉnh bàng quang", "2": "đáy bàng quang", "3": "mặt trên bàng quang", "4": "niệu quản",
+            "5": "ống dẫn tinh"
+        }
+    },
+    {
+        "name": "Trạm 34",
+        "image": "34.jpg",
+        "answers": {
+            "1": "tuyến tinh", "2": "bóng ống dẫn tinh", "3": "tuyến tiền liệt", "4.1": "mặt dưới bên bàng quang"
+        }
+    },
+    {
+        "name": "Trạm 35",
+        "image": "35.jpg",
+        "answers": {
+            "1.1": "đáy tử cung", "1.2": "mặt trên tử cung", "1.3": "mặt dưới tử cung", "1.4": "buồng tử cung",
+            "1.5": "cổ tử cung", "1.6": "ống cổ tử cung", "2.1": "túi cùng Douglas", "2.2": "túi cùng bàng quang",
+            "3.1": "âm đạo", "3.2": "lỗ âm đạo", "3.3": "vòm âm đạo", "4": "đỉnh bàng quang",
+            "5.1": "đáy bàng quang", "5.2": "dc rốn giữa", "6.1": "mặt trên bàng quang", "6.2": "mặt dưới bên bàng quang",
+            "7.1": "lỗ niệu đạo trong", "7.1": "lỗ niệu đạo ngoài", "8.1": "âm vật", "8.2": "môi bé",
+            "9.1": "trực tràng", "9.2": "ống hậu môn", "10.1": "cơ thắt hậu môn trong", "10.2": "cơ thắt hậu môn ngoài"
+        }
+    },
+    {
+        "name": "Trạm 43",
+        "image": "43.jpg",
+        "answers": {
+            "1.1": "quy đầu", "1.2": "thân dương vật", "1.3": "rễ dương vật", "2.1": "tinh hoàn",
+            "2.2": "đm tinh hoàn", "2.3": "tm tinh hoàn", "3.1": "mào tinh", "3.2": "ống dẫn tinh",
+            "4": "mặt dưới bên bàng quang", "5": "tuyến tiền liệt", "6": "niệu quản đoạn bụng"
+        }
+    },
+    {
+        "name": "Trạm 44",
+        "image": "44.jpg",
+        "answers": {
+            "1": "đỉnh bàng quang", "2.1": "đáy bàng quang", "2.2": "dc rốn giữa", "4.1": "lỗ niệu đạo trong",
+            "4.2": "lỗ niệu đạo ngoài", "5.1": "vật hang", "5.2": "vật xốp", "5.3": "quy đầu",
+            "6.1": "cơ thắt hậu môn trong", "6.2": "cơ thắt hậu môn ngoài", "7.1": "tuyến tiền liệt", "7.2": "túi bầu dục",
+            "8": "tuyến hành niệu đạo"
+        }
+    },
+    {
+        "name": "Trạm 36",
+        "image": "36.jpg",
+        "answers": {
+            "1.1": "lá phải của dc liềm", "1.2": "lá trái của dc liềm", "2.1": "thuỳ phải", "2.2": "thuỳ trái",
+            "3": "khuyết dc tròn", "4": "đáy túi mật"
+        }
+    },
+    {
+        "name": "Trạm 37",
+        "image": "37.png",
+        "answers": {
+            "1": "vùng trần", "2.1": "dc vành", "3": "tm chủ dưới", "4": "tm gan trái"
+        }
+    },
+    {
+        "name": "Trạm 38",
+        "image": "38.png",
+        "answers": {
+            "1": "thuỳ vuông", "2": "thuỳ đuôi", "3.1": "ấn dạ dày", "3.2": "ấn đại tràng",
+            "3.3": "ấn thận", "3.4": "ấn tá tràng", "3.5": "ấn thực quản", "3.6": "ấn thượng thận",
+            "4": "dc tròn", "5": "khe dc tm", "6.1": "đáy túi mật", "6.2": "thân túi mật",
+            "6.3": "cổ túi mật", "6.4": "ống túi mật", "7": "tm cửa", "8": "đm gan riêng"
+        }
+    },
+    {
+        "name": "Trạm 39",
+        "image": "39.png",
+        "answers": {
+            "1.1": "bướu đại tràng", "1.2": "dải mạc nối", "1.3": "dải tự do", "2.1": "đm mạc treo tràng trên",
+            "2.2": "tm mạc treo tràng trên", "3.1": "hồi tràng", "3.2": "góc hồi manh tràng", "4": "đm sigma",
+            "4.1": "kết tràng sigma", "4.2": "đm trực tràng trên", "5": "đm đại tràng phải", "6": "đm lách",
+            "7": "đm mạc treo tràng dưới"
+        }
+    },
+    {
+        "name": "Trạm 40",
+        "image": "40.png",
+        "answers": {
+            "1": "tm lách", "2": "tm cửa", "1.3": "dải tự do", "3": "ống mật chủ",
+            "4": "tm mạc treo tràng trên", "5": "đm mạc treo tràng trên", "6": "tm mạc treo tràng dưới"
+        }
+    },
+    {
+        "name": "Trạm 41",
+        "image": "41.png",
+        "answers": {
+            "1.1": "tm lách", "1.2": "tm mạc treo tràng dưới", "1.3": "tm mạc treo tràng trên", "2.1": "đm mạc treo tràng trên",
+            "3.1": "phần trên tá tràng", "3.2": "phần xuống tá tràng", "3.3": "phần nặng tá tràng", "3.4": "phần lên tá tràng",
+            "4.1": "đm tá tuỵ trên sau", "4.2": "đm tá tuỵ dưới sau", "5": "ống mật chủ", "6": "lách",
+            "7.1": "đầu tuỵ"	, "7.2": "đuôi tuỵ", "8": "túi mật"
+        }
+    },
+    {
+        "name": "Trạm 42",
+        "image": "42.png",
+        "answers": {
+            "1.1": "đm thân tạng", "1.2": "đm lách", "1.3": "đm gan chung", "1.4": "đm gan riêng",
+            "2": "đm tá tuỵ trên trước", "3": "đm tá tuỵ dưới trước", "4.1": "đm mạc treo tràng trên", "4.2": "tm mạc treo tràng trên",
+            "5.1": "ống gan phải", "5.2": "ống gan trái", "5.3": "ống gan chung", "5.4": "ống mật chủ",
+            "5.5": "ống túi mật", "7": "ống tuỵ chính", "7.2": "ống tuỵ phụ", "7.3": "bóng gan tuỵ",
+            "8.1": "nhú tá lớn", "8.2": "nhú tá bé", "9": "mỏm móc", "10.1": "bờ răng cưa của lách",
+            "10.2": "ấn dạ dày", "11": "hỗng tràng", "12": "tm cửa"
+        }
+    },
+    {
+        "name": "Trạm 45",
+        "image": "45.jpg",
+        "answers": {
+            "1": "bờ cong bé", "2": "bờ cong lớn", "3": "tâm vị", "4": "lỗ tâm vị",
+            "5": "khuyết góc", "6.1": "vòng mạch bờ cong lớn", "6.2": "vòng mạch bờ cong bé"
+        }
+    },
+    {
+        "name": "Trạm 46",
+        "image": "46.png",
+        "answers": {
+            "1": "cơ dọc", "2": "cơ vòng", "3": "khuyết góc", "4": "khuyết tâm vị",
+            "5": "tk lang thang", "6": "tâm vị", "7": "đáy vị", "8": "môn vị"
+        }
+    },
+    {
+        "name": "Trạm 47",
+        "image": "47.jpg",
+        "answers": {
+            "1": "nếp vị", "2": "lỗ tâm vị", "3": "cơ thắt môn vị", "4": "lớp thanh mạc"
+        }
+    },
+]
+
+IMAGE_DIR = Path(".")
+
+if "station_index" not in st.session_state:
+    st.session_state.station_index = 0
+
+station_index = st.session_state.station_index
+station = STATIONS[station_index]
+
+# =========================
+# THANH SIDEBAR
+# =========================
+st.sidebar.header("⚙️ Cài đặt")
+st.sidebar.write(f"Đang ở: **{station['name']}**")
+
+show_all_answers = st.sidebar.checkbox("Hiện toàn bộ đáp án cho giảng viên", value=False)
+
+if st.sidebar.button("🔄 Làm lại trạm này"):
+    for key in list(st.session_state.keys()):
+        if key.startswith(f"answer_{station_index}_"):
+            del st.session_state[key]
+    st.rerun()
+
+st.sidebar.markdown("---")
+if st.sidebar.button("⬅️ Quay lại trạm trước") and station_index > 0:
+    st.session_state.station_index -= 1
+    st.rerun()
+
+if st.sidebar.button("➡️ Chuyển sang trạm tiếp theo") and station_index < len(STATIONS) - 1:
+    st.session_state.station_index += 1
+    st.rerun()
+
+st.markdown("---")
+st.subheader(station["name"])
+
+# =========================
+# CHIA CỘT CHÍNH (Cột 1: Ảnh cố định, Cột 2: Ô nhập)
+# =========================
+st.markdown("""
+<style>
+[data-testid="stColumn"]:nth-of-type(1) {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 50px;
+    align-self: start;
+    max-height: 85vh;
+    overflow: hidden;
+}
+.sticky-img {
+    width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+/* Style cho form HTML nhập liệu */
+.quiz-container {
+    font-family: sans-serif;
+}
+.quiz-row {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f2f6;
+}
+.quiz-label {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: block;
+}
+.quiz-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.quiz-input:focus {
+    border-color: #ff4b4b;
+    outline: none;
+}
+.feedback {
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    display: none;
+    padding: 8px;
+    border-radius: 4px;
+}
+.feedback.correct {
+    display: block;
+    background-color: #d4edda;
+    color: #155724;
+}
+.feedback.incorrect {
+    display: block;
+    background-color: #f8d7da;
+    color: #721c24;
+}
+</style>
+""", unsafe_allow_html=True)
+
+col1, col2 = st.columns([5, 5], gap="large")
+
+with col1:
+    image_path = IMAGE_DIR / station["image"]
+    if image_path.exists():
+        with open(image_path, "rb") as f:
+            img_data = base64.b64encode(f.read()).decode()
+        ext = image_path.suffix.replace(".", "")
+        st.markdown(f'<img class="sticky-img" src="data:image/{ext};base64,{img_data}">', unsafe_allow_html=True)
+    else:
+        st.error(f"Không tìm thấy ảnh: {image_path}")
+
+with col2:
+    st.markdown("### ✍️ Nhập đáp án")
+    
+    if show_all_answers:
+        with st.expander("👁️ Xem nhanh toàn bộ đáp án"):
+            for num, ans in station["answers"].items():
+                st.write(f"**Số {num}:** {ans}")
+
+    # Tạo giao diện HTML thuần túy để xử lý phím Enter nhảy câu siêu tốc
+    html_content = '<div class="quiz-container">'
+    
+    # Tạo chuỗi dữ liệu đáp án để JavaScript đối chiếu trực tiếp
+    js_answers = {}
+    
+    for idx, (number, correct_answer) in enumerate(station["answers"].items()):
+        js_answers[idx] = correct_answer.strip().lower()
+        
+        html_content += f"""
+        <div class="quiz-row">
+            <label class="quiz-label">Số {number}:</label>
+            <input type="text" class="quiz-input" data-idx="{idx}" placeholder="Nhập đáp án rồi nhấn Enter...">
+            <div class="feedback" id="feedback-{idx}"></div>
+        </div>
+        """
+        
+    html_content += "</div>"
+
+    # Nhúng đoạn mã Script xử lý sự kiện Enter thuần túy (không có độ trễ)
+    html_content += f"""
+    <script>
+    const correctAnswers = {str(js_answers)};
+    const inputs = document.querySelectorAll('.quiz-input');
+
+    inputs.forEach(input => {{
+        input.addEventListener('keydown', function(e) {{
+            if (e.key === 'Enter') {{
+                e.preventDefault(); // Ngăn hành vi xuống dòng mặc định
+                
+                const currentIdx = parseInt(this.getAttribute('data-idx'));
+                const userAns = this.value.trim().toLowerCase();
+                const fbDiv = document.getElementById('feedback-' + currentIdx);
+                
+                if (userAns !== "") {{
+                    // Kiểm tra đúng sai ngay lập tức
+                    if (userAns === correctAnswers[currentIdx]) {{
+                        fbDiv.className = "feedback correct";
+                        fbDiv.innerHTML = "✅ Đúng chính xác!";
+                    }} else {{
+                        fbDiv.className = "feedback incorrect";
+                        fbDiv.innerHTML = "❌ Đáp án đúng: <b>" + correctAnswers[currentIdx] + "</b>";
+                    }}
+                    
+                    // Nhảy sang ô tiếp theo KHÔNG TRÌ HOÃN
+                    const nextInput = inputs[currentIdx + 1];
+                    if (nextInput) {{
+                        nextInput.focus();
+                        nextInput.scrollIntoView({{behavior: 'smooth', block: 'center'}});
+                    }}
+                }}
+            }}
+        }});
+    }});
+    </script>
+    """
+    
+    # Đẩy khối HTML/JS này vào giao diện cột 2
+    st.components.v1.html(html_content, height=800, scrolling=True)
+
+    # Nút chuyển tiếp nhanh ở cuối phần điền đáp án
+    st.markdown("### 🧭 Điều hướng nhanh")
+    nav_col1, nav_col2 = st.columns(2)
+
+    with nav_col1:
+        if st.button("⬅️ Trạm trước", key="btn_prev", use_container_width=True) and station_index > 0:
+            st.session_state.station_index -= 1
+            st.rerun()
+
+    with nav_col2:
+        if st.button("Trạm tiếp theo ➡️", key="btn_next", use_container_width=True) and station_index < len(STATIONS) - 1:
+            st.session_state.station_index += 1
+            st.rerun()
