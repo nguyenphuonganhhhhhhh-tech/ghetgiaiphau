@@ -23,7 +23,7 @@ st.caption("Sinh viên nhập đáp án theo từng số. Sau khi nhấn Enter, 
 STATIONS = [
     {
         "name": "Trạm 1",
-        "image": "1.jpg",
+        "image": "1.png",
         "answers": {
                 "1": "lỗ tịt",
    		"2": "lỗ sàng",
