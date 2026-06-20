@@ -200,7 +200,7 @@ STATIONS = [
         "name": "Trạm 25",
         "image": "25.jpg",
         "answers": {
-            "1.1": "van đm phổi", "1.2": "van đm chủ", "2": "vách gian thất", "2.2": "cơ trâm lưỡi",
+            "1.1": "van đm phổi", "1.2": "van đm chủ", "2": "vách gian thất", 
             "3.2": "cầu cơ", "3.3": "cơ nhú", "4": "tâm nhĩ phải", "5.1": "tâm thất phải", "5.2": "tâm thất trái"
         }
     },
