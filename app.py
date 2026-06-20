@@ -17,6 +17,28 @@ st.caption("Sinh viên nhập đáp án theo từng số. Sau khi nhấn Enter, 
 # Sử dụng CSS position: sticky để giữ ảnh cố định khi cuộn phần nhập đáp án
 st.markdown("""
 <style>
+<script>
+// Đoạn script bắt sự kiện phím Enter trong các ô input
+const handleEnterKey = (e) => {
+    if (e.key === "Enter") {
+        // Tìm tất cả các ô nhập liệu dạng text trong trang
+        const inputs = Array.from(window.parent.document.querySelectorAll('input[type="text"]'));
+        const index = inputs.indexOf(e.target);
+        
+        // Nếu tìm thấy ô hiện tại và vẫn còn ô tiếp theo thì nhảy con trỏ sang
+        if (index > -1 && index < inputs.length - 1) {
+            setTimeout(() => {
+                inputs[index + 1].focus();
+            }, 100); // Trì hoãn 100ms để Streamlit kịp xử lý lưu đáp án cũ
+        }
+    }
+};
+
+// Đăng ký sự kiện lắng nghe liên tục trên cửa sổ hiển thị
+setTimeout(() => {
+    window.parent.document.addEventListener('keydown', handleEnterKey);
+}, 1000);
+</script>
 [data-testid="stColumn"]:nth-of-type(1) {
     position: -webkit-sticky;
     position: sticky;
