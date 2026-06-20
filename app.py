@@ -432,7 +432,7 @@ STATIONS = [
 		"4": "tm đơn",
 		"5.1": "đm phổi"
 		"5.2": "tm phổi",
-		"6": "tm chủ trên,
+		"6": "tm chủ trên",
 		"7": "thực quản",
 		"8": "đm chủ ngực"
 		
