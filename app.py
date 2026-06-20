@@ -1,7 +1,7 @@
 import streamlit as st
 from pathlib import Path
 import base64
-
+import streamlit.components.v1 as components
 # =========================
 # CẤU HÌNH TRANG
 # =========================
@@ -483,23 +483,38 @@ with col2:
                 st.write(f"**Số {num}:** {ans}")
 
     # Vòng lặp sinh ô điền đáp án
-    for number, correct_answer in station["answers"].items():
-        st.markdown(f"**Số {number}:**")
-        user_answer = st.text_input(
-            "Nhập đáp án",
-            key=f"answer_{station_index}_{number}",
-            placeholder="Nhập đáp án rồi nhấn Enter...",
-            label_visibility="collapsed"
-        )
+    def move_to_next_input(i):
+    numbers = list(station["answers"].keys())
 
-        if user_answer.strip():
-            # Chuẩn hóa chuỗi trước khi so sánh
-            if user_answer.strip().lower() == correct_answer.strip().lower():
-                st.success(f"✅ Đúng chính xác!")
-            else:
-                st.error(f"❌ Sai rồi! Đáp án đúng: **{correct_answer}**")
-        
-        st.markdown('<div class="answer-divider"></div>', unsafe_allow_html=True)
+    if i < len(numbers) - 1:
+        st.session_state["focus_index"] = i + 1
+    else:
+        st.session_state["focus_index"] = None
+
+
+numbers = list(station["answers"].keys())
+
+for i, number in enumerate(numbers):
+    correct_answer = station["answers"][number]
+
+    st.markdown(f"**Số {number}:**")
+
+    user_answer = st.text_input(
+        "",
+        key=f"answer_{station_index}_{number}",
+        placeholder="Nhập đáp án rồi nhấn Enter...",
+        label_visibility="collapsed",
+        on_change=move_to_next_input,
+        args=(i,)
+    )
+
+    if user_answer.strip():
+        if user_answer.strip().lower() == correct_answer.strip().lower():
+            st.success(f"✅ Đúng chính xác!")
+        else:
+            st.error(f"❌ Đáp án đúng: **{correct_answer}**")
+
+    st.markdown('<div class="answer-divider"></div>', unsafe_allow_html=True)
 
     # Nút chuyển tiếp nhanh ở cuối phần điền đáp án
     st.markdown("### 🧭 Điều hướng nhanh")
