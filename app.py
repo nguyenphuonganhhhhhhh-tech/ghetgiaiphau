@@ -484,40 +484,40 @@ with col2:
 
     # Vòng lặp sinh ô điền đáp án
     def move_to_next_input(i):
-    	numbers = list(station["answers"].keys())
+        numbers = list(station["answers"].keys())
 
-    if i < len(numbers) - 1:
-        st.session_state["focus_index"] = i + 1
-    else:
-        st.session_state["focus_index"] = None
-
-
-numbers = list(station["answers"].keys())
-
-for i, number in enumerate(numbers):
-    correct_answer = station["answers"][number]
-
-    st.markdown(f"**Số {number}:**")
-
-    user_answer = st.text_input(
-        "",
-        key=f"answer_{station_index}_{number}",
-        placeholder="Nhập đáp án rồi nhấn Enter...",
-        label_visibility="collapsed",
-        on_change=move_to_next_input,
-        args=(i,)
-    )
-
-    if user_answer.strip():
-        if user_answer.strip().lower() == correct_answer.strip().lower():
-            st.success(f"✅ Đúng chính xác!")
+        if i < len(numbers) - 1:
+            st.session_state["focus_index"] = i + 1
         else:
-            st.error(f"❌ Đáp án đúng: **{correct_answer}**")
+            st.session_state["focus_index"] = None
 
-    st.markdown('<div class="answer-divider"></div>', unsafe_allow_html=True)
-focus_index = st.session_state.get("focus_index")
+    numbers = list(station["answers"].keys())
 
-if focus_index is not None:
+    for i, number in enumerate(numbers):
+        correct_answer = station["answers"][number]
+
+        st.markdown(f"**Số {number}:**")
+
+        user_answer = st.text_input(
+            "",
+            key=f"answer_{station_index}_{number}",
+            placeholder="Nhập đáp án rồi nhấn Enter...",
+            label_visibility="collapsed",
+            on_change=move_to_next_input,
+            args=(i,)
+        )
+
+        if user_answer.strip():
+            if user_answer.strip().lower() == correct_answer.strip().lower():
+                st.success("✅ Đúng chính xác!")
+            else:
+                st.error(f"❌ Đáp án đúng: **{correct_answer}**")
+
+        st.markdown('<div class="answer-divider"></div>', unsafe_allow_html=True)
+
+    focus_index = st.session_state.get("focus_index")
+
+    if focus_index is not None:
         components.html(f"""
         <script>
         setTimeout(function() {{
@@ -535,18 +535,17 @@ if focus_index is not None:
         }}, 300);
         </script>
         """, height=0)
+
     # Nút chuyển tiếp nhanh ở cuối phần điền đáp án
     st.markdown("### 🧭 Điều hướng nhanh")
     nav_col1, nav_col2 = st.columns(2)
+
     with nav_col1:
         if st.button("⬅️ Trạm trước", key="btn_prev", use_container_width=True) and station_index > 0:
             st.session_state.station_index -= 1
             st.rerun()
+
     with nav_col2:
         if st.button("Trạm tiếp theo ➡️", key="btn_next", use_container_width=True) and station_index < len(STATIONS) - 1:
             st.session_state.station_index += 1
             st.rerun()
-
-     
-    
-		
