@@ -498,7 +498,7 @@ with col2:
 
         st.markdown(f"**Số {number}:**")
 
-        user_answer = st.text_input(
+       user_answer = st.text_input(
     "",
     key=f"answer_{station_index}_{number}",
     placeholder="Nhập đáp án rồi nhấn Enter...",
@@ -506,6 +506,7 @@ with col2:
 )
 
 if user_answer.strip():
+
     if user_answer.strip().lower() == correct_answer.strip().lower():
         st.success("✅ Đúng chính xác!")
     else:
@@ -515,21 +516,22 @@ if user_answer.strip():
         f"""
         <script>
         setTimeout(function() {{
-            const next = window.parent.document.querySelectorAll('input[type="text"]')[{i + 1}];
+            const next = window.parent.document.querySelectorAll(
+                'input[type="text"]'
+            )[{i + 1}];
+
             if (next) {{
-                next.scrollIntoView({{behavior: "smooth", block: "center"}});
+                next.scrollIntoView({{
+                    behavior: "smooth",
+                    block: "center"
+                }});
+                next.focus();
             }}
         }}, 300);
         </script>
         """,
         unsafe_allow_html=True
     )
-
-        if user_answer.strip():
-            if user_answer.strip().lower() == correct_answer.strip().lower():
-                st.success("✅ Đúng chính xác!")
-            else:
-                st.error(f"❌ Đáp án đúng: **{correct_answer}**")
 
         st.markdown('<div class="answer-divider"></div>', unsafe_allow_html=True)
 
