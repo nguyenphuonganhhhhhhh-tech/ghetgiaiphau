@@ -14,6 +14,13 @@ st.set_page_config(
 st.title("🧠 Ghét Giải phẫu")
 st.caption("Sinh viên nhập đáp án theo từng số. Sau khi nhấn Enter, đáp án đúng sẽ hiện ngay bên dưới và tự động nhảy sang câu tiếp theo.")
 
+# Khởi tạo trạng thái lưu vị trí ô cần nhảy tiếp theo
+if "next_focus_idx" not in st.session_state:
+    st.session_state.next_focus_idx = None
+
+def giaiphau_next_focus(current_idx):
+    st.session_state.next_focus_idx = current_idx + 1
+
 # =========================
 # DỮ LIỆU TRẠM
 # =========================
@@ -45,7 +52,7 @@ STATIONS = [
             "3.2": "gối thể chai", "3.3": "thân thể chai", "3.4": "lồi thể chai", "4": "rãnh đỉnh chẩm",
             "5": "rãnh cựa", "6.1": "hồi đai", "6.2": "hồi chêm", "6.3": "hồi lưỡi", "6.4": "tiểu thuỳ trung tâm",
             "7.1": "đồi thị", "7.2": "mép dính gian đồi thị", "8": "vòm não", "9": "vách trong suốt",
-            "10": "vùng hạ đồi", "11": "lỗ gian giao thất", "12": "mép trước"
+            "10": "vùng hạ đồi", "11": "lỗ gian não thất", "12": "mép trước"
         }
     },
     {
@@ -442,50 +449,10 @@ st.markdown("""
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
-/* Style cho form HTML nhập liệu */
-.quiz-container {
-    font-family: sans-serif;
-}
-.quiz-row {
-    margin-bottom: 20px;
-    padding-bottom: 10px;
+.answer-divider {
+    margin-top: 15px;
+    margin-bottom: 15px;
     border-bottom: 1px solid #f0f2f6;
-}
-.quiz-label {
-    font-weight: bold;
-    font-size: 16px;
-    margin-bottom: 5px;
-    display: block;
-}
-.quiz-input {
-    width: 100%;
-    padding: 10px;
-    font-size: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-.quiz-input:focus {
-    border-color: #ff4b4b;
-    outline: none;
-}
-.feedback {
-    margin-top: 5px;
-    font-size: 14px;
-    font-weight: bold;
-    display: none;
-    padding: 8px;
-    border-radius: 4px;
-}
-.feedback.correct {
-    display: block;
-    background-color: #d4edda;
-    color: #155724;
-}
-.feedback.incorrect {
-    display: block;
-    background-color: #f8d7da;
-    color: #721c24;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -510,65 +477,47 @@ with col2:
             for num, ans in station["answers"].items():
                 st.write(f"**Số {num}:** {ans}")
 
-    # Tạo giao diện HTML thuần túy để xử lý phím Enter nhảy câu siêu tốc
-    html_content = '<div class="quiz-container">'
-    
-    # Tạo chuỗi dữ liệu đáp án để JavaScript đối chiếu trực tiếp
-    js_answers = {}
-    
-    for idx, (number, correct_answer) in enumerate(station["answers"].items()):
-        js_answers[idx] = correct_answer.strip().lower()
-        
-        html_content += f"""
-        <div class="quiz-row">
-            <label class="quiz-label">Số {number}:</label>
-            <input type="text" class="quiz-input" data-idx="{idx}" placeholder="Nhập đáp án rồi nhấn Enter...">
-            <div class="feedback" id="feedback-{idx}"></div>
-        </div>
-        """
-        
-    html_content += "</div>"
+    # Lấy danh sách các số câu hỏi của trạm hiện tại
+    numbers = list(station["answers"].keys())
 
-    # Nhúng đoạn mã Script xử lý sự kiện Enter thuần túy (không có độ trễ)
-    html_content += f"""
-    <script>
-    const correctAnswers = {str(js_answers)};
-    const inputs = document.querySelectorAll('.quiz-input');
+    # Vòng lặp sinh các ô điền câu hỏi
+    for i, number in enumerate(numbers):
+        correct_answer = station["answers"][number]
 
-    inputs.forEach(input => {{
-        input.addEventListener('keydown', function(e) {{
-            if (e.key === 'Enter') {{
-                e.preventDefault(); // Ngăn hành vi xuống dòng mặc định
-                
-                const currentIdx = parseInt(this.getAttribute('data-idx'));
-                const userAns = this.value.trim().toLowerCase();
-                const fbDiv = document.getElementById('feedback-' + currentIdx);
-                
-                if (userAns !== "") {{
-                    // Kiểm tra đúng sai ngay lập tức
-                    if (userAns === correctAnswers[currentIdx]) {{
-                        fbDiv.className = "feedback correct";
-                        fbDiv.innerHTML = "✅ Đúng chính xác!";
-                    }} else {{
-                        fbDiv.className = "feedback incorrect";
-                        fbDiv.innerHTML = "❌ Đáp án đúng: <b>" + correctAnswers[currentIdx] + "</b>";
-                    }}
-                    
-                    // Nhảy sang ô tiếp theo KHÔNG TRÌ HOÃN
-                    const nextInput = inputs[currentIdx + 1];
-                    if (nextInput) {{
-                        nextInput.focus();
-                        nextInput.scrollIntoView({{behavior: 'smooth', block: 'center'}});
-                    }}
+        st.markdown(f"**Số {number}:**")
+
+        user_answer = st.text_input(
+            "",
+            key=f"answer_{station_index}_{number}",
+            placeholder="Nhập đáp án rồi nhấn Enter...",
+            label_visibility="collapsed",
+            on_change=giaiphau_next_focus,
+            args=(i,)
+        )
+
+        if user_answer.strip():
+            if user_answer.strip().lower() == correct_answer.strip().lower():
+                st.success("✅ Đúng chính xác!")
+            else:
+                st.error(f"❌ Đáp án đúng: **{correct_answer}**")
+
+        st.markdown('<div class="answer-divider"></div>', unsafe_allow_html=True)
+
+    # ĐOẠN ĐIỀU KHIỂN NHẢY CON TRỎ
+    if st.session_state.next_focus_idx is not None:
+        st.components.v1.html(f"""
+            <script>
+            setTimeout(function() {{
+                const inputs = window.parent.document.querySelectorAll('input[type="text"]');
+                const nextInput = inputs[{st.session_state.next_focus_idx}];
+                if (nextInput) {{
+                    nextInput.focus();
+                    nextInput.scrollIntoView({{behavior: "smooth", block: "center"}});
                 }}
-            }}
-        }});
-    }});
-    </script>
-    """
-    
-    # Đẩy khối HTML/JS này vào giao diện cột 2
-    st.components.v1.html(html_content, height=800, scrolling=True)
+            }}, 300);
+            </script>
+        """, height=0, width=0)
+        st.session_state.next_focus_idx = None
 
     # Nút chuyển tiếp nhanh ở cuối phần điền đáp án
     st.markdown("### 🧭 Điều hướng nhanh")
