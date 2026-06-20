@@ -484,7 +484,7 @@ with col2:
 
     # Vòng lặp sinh ô điền đáp án
     def move_to_next_input(i):
-    numbers = list(station["answers"].keys())
+    	numbers = list(station["answers"].keys())
 
     if i < len(numbers) - 1:
         st.session_state["focus_index"] = i + 1
