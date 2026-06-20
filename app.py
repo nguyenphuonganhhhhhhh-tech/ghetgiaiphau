@@ -495,7 +495,7 @@ STATIONS = [
                 "1": "đỉnh bàng quang",
     		"2": "đáy bàng quang",
 		"3": "mặt trên bàng quang",
-		"4": "niệu quản,
+		"4": "niệu quản",
 		"5": "ống dẫn tinh"
 		
         }
