@@ -158,7 +158,7 @@ STATIONS = [
     },
     {
         "name": "Trạm 17",
-        "image": "17.jpg",
+        "image": "17.png",
         "answers": {
             "1.1": "thân xg móng", "1.2": "sừng bé xg móng", "1.3": "sừng lớn xg móng", "2.1": "mảnh sụn giáp",
             "2.2": "lồi thanh quản", "2.3": "khuyết giáp trên", "3": "sụn nhẫn", "4": "sụn khí quản",
