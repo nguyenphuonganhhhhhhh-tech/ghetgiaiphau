@@ -493,69 +493,39 @@ with col2:
 
     numbers = list(station["answers"].keys())
 
-    for i, number in enumerate(numbers):
+        for i, number in enumerate(numbers):
         correct_answer = station["answers"][number]
 
         st.markdown(f"**Số {number}:**")
 
-       user_answer = st.text_input(
-    "",
-    key=f"answer_{station_index}_{number}",
-    placeholder="Nhập đáp án rồi nhấn Enter...",
-    label_visibility="collapsed"
-)
+        user_answer = st.text_input(
+            "",
+            key=f"answer_{station_index}_{number}",
+            placeholder="Nhập đáp án rồi nhấn Enter...",
+            label_visibility="collapsed"
+        )
 
-if user_answer.strip():
+        if user_answer.strip():
+            if user_answer.strip().lower() == correct_answer.strip().lower():
+                st.success("✅ Đúng chính xác!")
+            else:
+                st.error(f"❌ Đáp án đúng: **{correct_answer}**")
 
-    if user_answer.strip().lower() == correct_answer.strip().lower():
-        st.success("✅ Đúng chính xác!")
-    else:
-        st.error(f"❌ Đáp án đúng: **{correct_answer}**")
-
-    st.markdown(
-        f"""
-        <script>
-        setTimeout(function() {{
-            const next = window.parent.document.querySelectorAll(
-                'input[type="text"]'
-            )[{i + 1}];
-
-            if (next) {{
-                next.scrollIntoView({{
-                    behavior: "smooth",
-                    block: "center"
-                }});
-                next.focus();
-            }}
-        }}, 300);
-        </script>
-        """,
-        unsafe_allow_html=True
-    )
+            st.markdown(
+                f"""
+                <script>
+                setTimeout(function() {{
+                    const next = window.parent.document.querySelectorAll('input[type="text"]')[{i + 1}];
+                    if (next) {{
+                        next.scrollIntoView({{behavior: "smooth", block: "center"}});
+                    }}
+                }}, 300);
+                </script>
+                """,
+                unsafe_allow_html=True
+            )
 
         st.markdown('<div class="answer-divider"></div>', unsafe_allow_html=True)
-
-    focus_index = st.session_state.get("focus_index")
-
-    if focus_index is not None:
-        components.html(f"""
-        <script>
-        setTimeout(function() {{
-            const inputs = Array.from(
-                window.parent.document.querySelectorAll('input[type="text"]')
-            ).filter(x => !x.disabled);
-
-            if (inputs[{focus_index}]) {{
-                inputs[{focus_index}].focus();
-                inputs[{focus_index}].scrollIntoView({{
-                    behavior: "smooth",
-                    block: "center"
-                }});
-            }}
-        }}, 300);
-        </script>
-        """, height=0)
-
     # Nút chuyển tiếp nhanh ở cuối phần điền đáp án
     st.markdown("### 🧭 Điều hướng nhanh")
     nav_col1, nav_col2 = st.columns(2)
