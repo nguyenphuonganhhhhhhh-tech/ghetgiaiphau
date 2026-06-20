@@ -803,9 +803,22 @@ else:
     st.warning(f"Chưa có ảnh: {image_path}")
 
 st.markdown("---")
+st.subheader(station["name"])
 
-# PHẦN NHẬP ĐÁP ÁN Ở DƯỚI
+# HIỆN ẢNH
+image_path = IMAGE_DIR / station["image"]
+
+if image_path.exists():
+    img = Image.open(image_path)
+    st.image(img, use_container_width=True)
+else:
+    st.error(f"Không tìm thấy ảnh: {image_path}")
+
+st.markdown("---")
+
+# NHẬP ĐÁP ÁN
 st.markdown("### ✍️ Nhập đáp án")
+
 
 for number, correct_answer in station["answers"].items():
     st.markdown(f"**Số {number}:**")
