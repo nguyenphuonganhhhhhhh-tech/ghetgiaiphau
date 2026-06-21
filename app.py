@@ -50,7 +50,7 @@ STATIONS = [
         "answers": {
             "1.1": "rãnh đai", "1.2": "rãnh dưới đỉnh", "2": "rãnh thể chai", "3.1": "mỏ thể chai",
             "3.2": "gối thể chai", "3.3": "thân thể chai", "3.4": "lồi thể chai", "4": "rãnh đỉnh chẩm",
-            "5": "rãnh cựa", "6.1": "hồi đai", "6.2": "hồi chêm", "6.3": "hồi lưỡi", "6.4": "tiểu thuỳ trung tâm",
+            "5": "rãnh cựa", "6.1": "hồi đai", "6.2": "hồi chêm", "6.3": "hồi lưỡi", "6.4": "tiểu thuỳ cạnh tt",
             "7.1": "đồi thị", "7.2": "mép dính gian đồi thị", "8": "vòm não", "9": "vách trong suốt",
             "10": "vùng hạ đồi", "11": "lỗ gian não thất", "12": "mép trước"
         }
@@ -69,7 +69,7 @@ STATIONS = [
         "image": "5.jpg",
         "answers": {
             "1": "cơ chẩm trán", "2": "cơ mảnh khảnh", "3": "cơ vòng mắt", "3.1": "phần mí",
-            "3.2": "phần mắt", "4": "cơ mũi", "5": "cơ nâng môi trên", "6": "cơ gò má bé",
+            "3.2": "phần mắt", "4": "cơ mũi", "5": "cơ nâng môi trên cánh mũi", "6": "cơ gò má bé",
             "7": "cơ gò má lớn", "8": "cơ vòng miệng", "9": "cơ mút", "10": "cơ cười",
             "11": "cơ hạ môi dưới", "12": "cơ hạ góc miệng", "13": "cơ cằm", "14": "cơ ức đòn chũm",
             "14.1": "phần ức", "14.2": "phần đòn"
@@ -81,7 +81,7 @@ STATIONS = [
         "answers": {
             "1": "cơ thái dương", "2": "đm thái dương nông", "3": "đm ngang mặt", "4": "đm góc",
             "5": "đm môi trên", "6": "đm môi dưới", "7": "cơ mút", "8": "đm chẩm", "9": "đm cảnh trong",
-            "10": "đm cảnh ngoài", "11": "đm cảnh chung", "12": "tk mặt", "13": "đm mặt", "14": "đm lưỡi",
+            "10": "đm cảnh ngoài", "11": "đm cảnh chung", "12": "tk cằm", "13": "đm mặt", "14": "đm lưỡi",
             "15": "đm thanh quản", "16": "cơ giáp móng", "17": "đm giáp trên", "18": "cơ bậc thang",
             "18.1": "cơ bậc thang trước", "18.2": "cơ bậc thang giữa", "18.3": "cơ bậc thang sau",
             "19": "cơ nâng vai", "20": "tm cảnh trong", "21": "tm dưới đòn", "22": "tm cảnh ngoài",
