@@ -85,7 +85,7 @@ STATIONS = [
             "15": "đm thanh quản", "16": "cơ giáp móng", "17": "đm giáp trên", "18": "cơ bậc thang",
             "18.1": "cơ bậc thang trước", "18.2": "cơ bậc thang giữa", "18.3": "cơ bậc thang sau",
             "19": "cơ nâng vai", "20": "tm cảnh trong", "21": "tm dưới đòn", "22": "tm cảnh ngoài",
-            "23": "đm dưới đòn", "24": "đám rối tk cánh tay", "25": "cơ bán gai đầu"
+            "23": "đm dưới đòn", "24": "đám rối tk cánh tay", "25": "cơ gối đầu"
         }
     },
     {
