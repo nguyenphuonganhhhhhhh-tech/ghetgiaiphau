@@ -353,7 +353,7 @@ STATIONS = [
         "image": "41.png",
         "answers": {
             "1.1": "tm lách", "1.2": "tm mạc treo tràng dưới", "1.3": "tm mạc treo tràng trên", "1.4": "tm cửa", "2.1": "đm mạc treo tràng trên",
-            "3.1": "phần trên tá tràng", "3.2": "phần xuống tá tràng", "3.3": "phần nặng tá tràng", "3.4": "phần lên tá tràng",
+            "3.1": "phần trên tá tràng", "3.2": "phần xuống tá tràng", "3.3": "phần ngang tá tràng", "3.4": "phần lên tá tràng",
             "4.1": "đm tá tuỵ trên sau", "4.2": "đm tá tuỵ dưới sau", "5": "ống mật chủ", "6": "lách",
             "7.1": "đầu tuỵ"	, "7.2": "đuôi tuỵ", "8": "túi mật"
         }
