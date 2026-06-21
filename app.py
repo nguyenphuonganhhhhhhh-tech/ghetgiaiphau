@@ -374,7 +374,7 @@ STATIONS = [
         "name": "Trạm 45",
         "image": "45.jpg",
         "answers": {
-            "1": "bờ cong bé", "2": "bờ cong lớn", "3": "tâm vị", "4": "lỗ tâm vị",
+            "1": "bờ cong bé", "2": "bờ cong lớn", "3": "tâm vị", "4": "lỗ môn vị",
             "5": "khuyết góc", "6.1": "vòng mạch bờ cong lớn", "6.2": "vòng mạch bờ cong bé"
         }
     },
