@@ -123,7 +123,7 @@ STATIONS = [
             "5": "rãnh cựa", "6": "tiểu thuỳ cạnh trung tâm", "7": "hồi đai", "8": "hồi chêm",
             "9": "hồi lưỡi", "10.1": "mỏ thể chai", "10.2": "gối thể chai", "10.3": "thân thể chai",
             "10.4": "lồi thể chai", "11": "vách trong suốt", "12": "vòm não", "13": "đồi thị",
-            "13.1": "mép dính gian đồi thị", "14": "vùng hạ đồi", "15": "lỗ gian não thất", "16": "mép trước",
+            "13.1": "mép dính gian đồi thị", "14": "vùng hạ đồi", "15": "mép trước", "16": "giao thoa thị giác",
             "17": "thể tùng", "18": "mép sau", "19": "não thất IV", "20": "tiễu não"
         }
     },
