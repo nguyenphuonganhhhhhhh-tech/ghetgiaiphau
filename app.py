@@ -388,7 +388,7 @@ STATIONS = [
     },
     {
         "name": "Trạm 47",
-        "image": "47.jpg",
+        "image": "47.png",
         "answers": {
             "1": "nếp vị", "2": "lỗ tâm vị", "3": "cơ thắt môn vị", "4": "lớp thanh mạc"
         }
