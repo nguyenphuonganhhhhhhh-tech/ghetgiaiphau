@@ -301,7 +301,7 @@ STATIONS = [
         "answers": {
             "1": "đỉnh bàng quang", "2.1": "đáy bàng quang", "2.2": "dc rốn giữa", "4.1": "lỗ niệu đạo trong",
             "4.2": "lỗ niệu đạo ngoài", "5.1": "vật hang", "5.2": "vật xốp", "5.3": "quy đầu",
-            "6.1": "cơ thắt hậu môn trong", "6.2": "cơ thắt hậu môn ngoài", "7.1": "tuyến tiền liệt", "7.2": "túi bầu dục",
+            "6.1": "cơ thắt hậu môn trong", "6.2": "cơ thắt hậu môn ngoài", "7.1": "tuyến tiền liệt", 
             "8": "tuyến hành niệu đạo"
         }
     },
