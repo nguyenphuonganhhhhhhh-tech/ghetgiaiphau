@@ -254,8 +254,8 @@ STATIONS = [
         "name": "Trạm 32",
         "image": "32.jpg",
         "answers": {
-            "1": "dc tròn", "2": "dc rộng", "3": "vòi tử cung", "3.1": "bóng tử cung",
-            "3.2": "phễu tử cung", "3.3": "eo vòi tử cung", "4": "nếp rốn trong", "5": "dc riêng buồng trứng",
+            "1": "dc tròn", "2": "dc rộng", "3": "vòi tử cung", "3.1": "phễu tử cung",
+            "3.2": "bóng tử cung", "3.3": "eo vòi tử cung", "4": "nếp rốn trong", "5": "dc riêng buồng trứng",
             "6": "cơ thẳng bụng"
         }
     },
@@ -282,7 +282,7 @@ STATIONS = [
             "1.5": "cổ tử cung", "1.6": "ống cổ tử cung", "2.1": "túi cùng Douglas", "2.2": "túi cùng bàng quang",
             "3.1": "âm đạo", "3.2": "lỗ âm đạo", "3.3": "vòm âm đạo", "4": "đỉnh bàng quang",
             "5.1": "đáy bàng quang", "5.2": "dc rốn giữa", "6.1": "mặt trên bàng quang", "6.2": "mặt dưới bên bàng quang",
-            "7.1": "lỗ niệu đạo trong", "7.1": "lỗ niệu đạo ngoài", "8.1": "âm vật", "8.2": "môi bé",
+            "7.1": "lỗ niệu đạo trong", "7.2": "lỗ niệu đạo ngoài", "8.1": "âm vật", "8.2": "môi bé",
             "9.1": "trực tràng", "9.2": "ống hậu môn", "10.1": "cơ thắt hậu môn trong", "10.2": "cơ thắt hậu môn ngoài"
         }
     },
