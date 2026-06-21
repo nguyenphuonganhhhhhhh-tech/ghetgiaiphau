@@ -183,7 +183,7 @@ STATIONS = [
         "name": "Trạm 23",
         "image": "23.jpg",
         "answers": {
-            "1.1": "tâm nhĩ phải", "1.2": "tâm nhĩ trái", "2.1": "đm phổi", "2.2": "tm phổi P",
+            "1.1": "tâm nhĩ phải", "1.2": "tâm nhĩ trái", "2.1": "đm phổi", "2.2": "tm phổi",
             "3.1": "tm chủ trên", "3.2": "tm chủ dưới", "4": "xoang vành", "5.1": "tm bờ trái",
             "5.2": "tm tim giữa", "5.3": "tm tim lớn", "6": "đm gian thất sau"
         }
